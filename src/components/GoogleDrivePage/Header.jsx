@@ -1,5 +1,4 @@
 import { GDRIVE } from "../../constants_urls/urls";
-
 import { GoQuestion } from "react-icons/go";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
@@ -36,6 +35,11 @@ function Header({ dataFiles }) {
     setAnchorElProfile(null);
   };
 
+  const handleProfileClick = () => {
+    window.open('https://portfolio-react-five-puce.vercel.app/', '_blank');
+    handleCloseProfile();
+  };
+
   useEffect(() => {
     const newPhotoURL = localStorage.getItem("photoURL");
     try {
@@ -44,6 +48,17 @@ function Header({ dataFiles }) {
     } catch (error) {
       console.log(error);
     }
+
+    // Retrieve the theme from localStorage and apply it
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    }
   }, []);
 
   const handleLogout = () => {
@@ -51,16 +66,15 @@ function Header({ dataFiles }) {
     navigate("/");
   };
 
-  useEffect(() => {
-    if (theme === "dark") {
+  const handleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme); // Store the theme in localStorage
+    if (newTheme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
-  }, [theme]);
-
-  const handleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -76,7 +90,6 @@ function Header({ dataFiles }) {
         <div className="flex gap-4 cursor-pointer mr-4 items-center">
           <MdOutlineLightMode className="text-3xl" onClick={handleTheme} />
         
-
           <div>
             <p
               onClick={handleClickSettings}
@@ -95,9 +108,6 @@ function Header({ dataFiles }) {
                 "aria-labelledby": "settings-button",
               }}
             >
-              {/* <MenuItem onClick={handleCloseSettings}>Light</MenuItem>
-              <MenuItem onClick={handleCloseSettings}>Dark</MenuItem>
-              <MenuItem onClick={handleCloseSettings}>System</MenuItem> */}
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
@@ -110,7 +120,7 @@ function Header({ dataFiles }) {
               aria-expanded={openProfile ? "true" : undefined}
             >
               {photoURL ? (
-                <img src={photoURL} alt="" className="rounded-full w-[50px] " />
+                <img src={photoURL} alt="" className="rounded-full w-[50px]" />
               ) : (
                 <CgProfile className="text-2xl" />
               )}
@@ -124,7 +134,7 @@ function Header({ dataFiles }) {
                 "aria-labelledby": "profile-button",
               }}
             >
-              <MenuItem onClick={handleCloseProfile}>Profile</MenuItem>
+              <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
               <MenuItem onClick={handleCloseProfile}>My account</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
