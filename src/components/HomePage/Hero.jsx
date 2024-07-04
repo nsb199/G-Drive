@@ -207,9 +207,9 @@ function Hero() {
             </p>
           </div>
           <div className="flex gap-3 my-10 text-[17px] ">
-            <p>Don`t have an account? </p>
+            <p>Don't have an account? </p>
             <button className="text-[#1A73E8]" onClick={openModal}>
-              Signin to create account
+              Sign-in to create one
             </button>
           </div>
         </div>

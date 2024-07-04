@@ -205,7 +205,7 @@ function Navbar() {
         </Box>
       </Modal>
 
-      <div className="flex justify-between p-2 sm:justify-between">
+      <div className="flex justify-between mt-3 p-2 sm:justify-between">
         <div className="flex items-center">
           <img
             src={GDRIVE}
@@ -219,15 +219,15 @@ function Navbar() {
         </div>
 
         <div className="flex gap-5 mr-10">
-          <button
+          {/* <button
             className="p-2 text-[#1A73E8] font-semibold text-[18px] hover:bg-[#F5f5f5]"
             onClick={openModal}
           >
             Sign in
-          </button>
+          </button> */}
           <button
             className="p-2 font-semibold bg-[#1A73E8] text-[#fff] rounded-lg w-[120px] sm:hidden md:block"
-            // onClick={gotoDrive}
+            onClick={openModal}
           >
             Go to Drive
           </button>

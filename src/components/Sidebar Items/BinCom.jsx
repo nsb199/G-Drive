@@ -1,5 +1,4 @@
-// import Header from "../GoogleDrivePage/Header";
-// import MainSidebar from "../MainSidebar/MainSidebar";
+
 import { BIN_IMG } from "../../constants_urls/urls";
 import Header from "../GoogleDrivePage/Header";
 import MainSidebar from "../MainSidebar/MainSidebar";

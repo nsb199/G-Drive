@@ -119,7 +119,7 @@ function Siderbar() {
                     onChange={hadnleInputFiles}
                   />
                   <button
-                    className="p-2 w-[150px] bg-[#1B73E9] text-[#fff] rounded-lg"
+                    className="p-2 w-[150px] bg-[#2f353d] text-[#fff] rounded-lg"
                     onClick={handleUpload}
                   >
                     Upload
